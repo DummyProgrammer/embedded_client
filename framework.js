@@ -74,11 +74,12 @@ window.Framework = {
         console.log("initialSetup function called.");
         window.addEventListener('message', (event) => {
             console.log(event.origin)
-            const allowedOrigin = '<yourHostOrigin>';
+            const allowedOrigin = 'https://dummyprogrammer.github.io';
             if (allowedOrigin !== event.origin) {
                 return;
             }
             const message = event.data;
+            console.log(message.type)
             if (message && message.type === 'clickToDial') {
                 window.PureCloud.clickToDial(message.data);
             }
