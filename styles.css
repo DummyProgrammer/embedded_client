@@ -1,0 +1,29 @@
+/* styles.css */
+
+/* Style the h1 header */
+h1 {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Style the telephone link */
+a[href^="tel:"] {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Style the button */
+#clickToDialButton {
+    background-color: #d47508;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Button hover effect */
+#clickToDialButton:hover {
+    background-color: #0056b3;
+}

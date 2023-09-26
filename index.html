@@ -2,36 +2,43 @@
 
 <html>
 
-                <head>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
 
-                                <meta charset="utf-8"/>
+        <meta charset="utf-8"/>
 
-                                <title>Embedded Framework Testing</title>
+        <title>Embedded Framework Testing</title>
 
-                </head>
+    </head>
 
-                <body>
+    <body>
 
-                                <h1>Embedded Framework Testing</h1>
+        <h1>Embedded Framework Testing</h1>
+        <iframe id="softphone" style="width: 400px; height: 500px; border: none;" allow="camera *; microphone *; autoplay *" src="https://apps.usw2.pure.cloud/crm/embeddableFramework.html?enableFrameworkClientId=true"></iframe>
+        
+        <h2>For Click-To-Dial Test</h2>
+        
+        <ul>
+            <li><a href="tel:+13172222222">Call Us: +13172222222 - For browser extensions</a></li>
+            <li><button id="clickToDialButton" onclick="performClickToDial()">Click to Dial - For Embedded client +13172222222</button></li>
+        </ul>
+        
+        <script>
+            function performClickToDial() {
+                const iframeContentWindow = document.querySelector('iframe').contentWindow;
+                const targetDomain = 'https://apps.usw2.pure.cloud';
+                const message = {
+                    type: 'clickToDial',
+                    data: {
+                        number: "3172222222",
+                        type: "call",
+                        autoPlace: true,
+                    }
+                };
+                iframeContentWindow.postMessage(message, targetDomain);
+            } 
 
-                                <a href="tel:+13172222222">Call Us: +13172222222</a>
-
-                                <button id="clickToDialButton">Click to Dial</button>
-
-                                <iframe id="softphone" style="width: 400px;height: 500px;border: none;" allow="camera *; microphone *; autoplay *" src=https://apps.usw2.pure.cloud/crm/embeddableFramework.html?enableFrameworkClientId=true></iframe>
-                                <script src="framework.js"></script>
-                                <script>
-                                    // Add an event listener to the button
-                                    click() {
-                                      // Invoke the click-to-dial function when the button is clicked
-                                      console.log('process click to dial');
-                                        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
-                                            type: 'clickToDial',
-                                            data: { number: "3172222222", autoPlace: true}
-                                        }), "*");
-                                    }   
-                                    
-                                  </script>
-                </body>             
+        </script>
+    </body>
 
 </html>
