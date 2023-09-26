@@ -74,7 +74,7 @@ window.Framework = {
         console.log("initialSetup function called.");
         window.addEventListener('message', (event) => {
             console.log(event.origin)
-            const allowedOrigin = 'https://dummyprogrammer.github.io';
+            const allowedOrigin = 'https://dummyprogrammer.github.io'; // change this to your webserver domain (origin)
             if (allowedOrigin !== event.origin) {
                 return;
             }
