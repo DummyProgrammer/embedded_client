@@ -74,6 +74,7 @@ window.Framework = {
         window.addEventListener("message", function(event) {
             try {
                 var message = JSON.parse(event.data);
+                console.log(message.type)
                 if(message){
                     if(message.type == "clickToDial"){
                         window.PureCloud.clickToDial(message.data);
@@ -118,32 +119,4 @@ window.Framework = {
     },
     contactSearch: function (searchValue, onSuccess, onFailure) {
     }
-};
-
-window.PureCloud = {
-    //addAssociation: function ({type, id, text, select, interactionId}),
-    //addTransferContext: function ({name, attributes}),
-    clickToDial: function (message) {
-        console.log('print this')
-        console.log(message.data)
-    }
-    /*
-    subscribe: function ({type, callback}),
-    Interaction: {
-        addCustomAttributes: function ({interactionId, attributes}),
-        updateState: function ({action, id}),
-        Chat: {
-            getTranscript: function ({interactionId, callback})
-        }
-    },
-    User: {
-        getAuthToken: function (callback),
-        setView: function (type, view),
-        updateStatus: function (id),
-        Notification: {
-            notifyUser: function ({message, type}),
-            setAudioConfiguration: function ({call, callback, chat, email, outbound dialing, message, voicemail})
-        }
-    }
-    */
 };
