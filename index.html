@@ -30,11 +30,12 @@
             function performClickToDial() {
                 const iframeContentWindow = document.querySelector('iframe').contentWindow;
                 const phoneNumberInput = document.getElementById('phoneNumberInput');
+                const phoneNumber = phoneNumberInput.value;
                 const targetDomain = 'https://apps.usw2.pure.cloud';
                 const message = {
                     type: 'clickToDial',
                     data: {
-                        number: phoneNumberInput,
+                        number: phoneNumber,
                         type: "call",
                         autoPlace: false,
                         queueId: "c03a3d4a-7207-4f8c-bab3-d3f8f015af79"
