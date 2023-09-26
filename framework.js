@@ -71,6 +71,7 @@ window.Framework = {
 
     
     initialSetup: function () {
+        console.log("initialSetup function called.");
         window.addEventListener('message', (event) => {
             console.log(event.origin)
             const allowedOrigin = '<yourHostOrigin>';
