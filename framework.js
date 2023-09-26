@@ -83,6 +83,8 @@ window.Framework = {
             if (message && message.type === 'clickToDial') {
                 window.PureCloud.clickToDial(message.data);
             }
+
+            if 
         });
     },
 
