@@ -14,10 +14,23 @@
 
                                 <h1>Embedded Framework Testing</h1>
 
+                                
+                                <button id="clickToDialButton">Click to Dial</button>
+
                                 <iframe id="softphone" style="width: 400px;height: 500px;border: none;" allow="camera *; microphone *; autoplay *" src=https://apps.usw2.pure.cloud/crm/embeddableFramework.html?enableFrameworkClientId=true></iframe>
-
-                                <iframe id="Chat window" style="width: 1000px;height: 500px;border: none;" iframe allow="camera *; microphone *; autoplay *" src=https://apps.usw2.pure.cloud/crm/interaction.html?enableFrameworkClientId=true></iframe>
-
+                                <script src="framework.js"></script>
+                                <script>
+                                    // Add an event listener to the button
+                                    document.getElementById("clickToDialButton").addEventListener("click", function() {
+                                      // Invoke the click-to-dial function when the button is clicked
+                                      console.log('process click to dial');
+                                        document.getElementById("softphone").contentWindow.postMessage(JSON.stringify({
+                                            type: 'clickToDial',
+                                            data: { number: "3172222222", autoPlace: true}
+                                        }), "*");
+                                    }
+                                    );
+                                  </script>
                 </body>             
 
 </html>

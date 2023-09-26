@@ -68,8 +68,43 @@ window.Framework = {
             callback("en-US");
         }
     },
+
+    
     initialSetup: function () {
+        window.addEventListener("message", function(event) {
+            try {
+                var message = JSON.parse(event.data);
+                if(message){
+                    if(message.type == "clickToDial"){
+                        window.PureCloud.clickToDial(message.data);
+                    } else if(message.type == "addAssociation"){
+                        window.PureCloud.addAssociation(message.data);
+                    }else if(message.type == "addAttribute"){
+                        window.PureCloud.addCustomAttributes(message.data);
+                    }else if(message.type == "addTransferContext"){
+                        window.PureCloud.addTransferContext(message.data);
+                    }else if(message.type == "sendContactSearch"){
+                        if(contactSearchCallback) {
+                            contactSearchCallback(message.data);
+                        }
+                    }else if(message.type == "updateUserStatus"){
+                        window.PureCloud.User.updateStatus(message.data);
+                    }else if(message.type == "updateInteractionState"){
+                        window.PureCloud.Interaction.updateState(message.data);
+                    }else if(message.type == "setView"){
+                        window.PureCloud.User.setView(message.data);
+                    }else if(message.type == "updateAudioConfiguration"){
+                        window.PureCloud.User.Notification.setAudioConfiguration(message.data);
+                    }else if(message.type == "sendCustomNotification"){
+                        window.PureCloud.User.Notification.notifyUser(message.data);
+                    }
+                }
+            } catch {
+                //ignore if you can not parse the payload into JSON
+            }
+        });
     },
+
     screenPop: function (searchString, interaction) {
         // Use your CRM vendor's API to perform screen pop.
     },
@@ -83,4 +118,32 @@ window.Framework = {
     },
     contactSearch: function (searchValue, onSuccess, onFailure) {
     }
+};
+
+window.PureCloud = {
+    //addAssociation: function ({type, id, text, select, interactionId}),
+    //addTransferContext: function ({name, attributes}),
+    clickToDial: function (message) {
+        console.log('print this')
+        console.log(message.data)
+    }
+    /*
+    subscribe: function ({type, callback}),
+    Interaction: {
+        addCustomAttributes: function ({interactionId, attributes}),
+        updateState: function ({action, id}),
+        Chat: {
+            getTranscript: function ({interactionId, callback})
+        }
+    },
+    User: {
+        getAuthToken: function (callback),
+        setView: function (type, view),
+        updateStatus: function (id),
+        Notification: {
+            notifyUser: function ({message, type}),
+            setAudioConfiguration: function ({call, callback, chat, email, outbound dialing, message, voicemail})
+        }
+    }
+    */
 };
