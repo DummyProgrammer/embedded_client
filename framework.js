@@ -81,6 +81,7 @@ window.Framework = {
             const message = event.data;
             console.log(message.type)
             if (message && message.type === 'clickToDial') {
+                console.log(message.data)
                 window.PureCloud.clickToDial(message.data);
             }
 
