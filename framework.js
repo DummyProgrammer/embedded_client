@@ -46,7 +46,7 @@ window.Framework = {
             },
             sso: {
                 provider: "adfs",
-                orgName: "jandresdev"
+                orgName: "Jandresdev"
             },
             display: {
                 interactionDetails: {
