@@ -1,6 +1,6 @@
 window.Framework = {
     config: {
-        name: "jandresdev",
+        name: "Jandresdev",
         clientIds: {
             "cac1.pure.cloud": "<your OAuth Client ID>",
             "sae1.pure.cloud": "<your OAuth Client ID>",
