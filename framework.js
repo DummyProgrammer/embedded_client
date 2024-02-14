@@ -1,11 +1,11 @@
 window.Framework = {
     config: {
-        name: "<Org Name>",
+        name: "jandresdev",
         clientIds: {
             "cac1.pure.cloud": "<your OAuth Client ID>",
             "sae1.pure.cloud": "<your OAuth Client ID>",
             "mypurecloud.com": "<your OAuth Client ID>",
-            "usw2.pure.cloud": "<your OAuth Client ID>",
+            "usw2.pure.cloud": "9d9b5378-2f8f-4196-b1fb-43634adb2736",
             "aps1.pure.cloud": "<your OAuth Client ID>",
             "apne2.pure.cloud": "<your OAuth Client ID>",
             "mypurecloud.com.au": "<your OAuth Client ID>",
@@ -22,7 +22,7 @@ window.Framework = {
             hideCallLogContact: false,
             hideCallLogRelation: false,
             enableTransferContext: true,
-            dedicatedLoginWindow: false,
+            dedicatedLoginWindow: true,
             embeddedInteractionWindow: true,
             enableConfigurableCallerId: false,
             enableServerSideLogging: false,
@@ -45,8 +45,8 @@ window.Framework = {
                 }
             },
             sso: {
-                provider: "",
-                orgName: ""
+                provider: "adfs",
+                orgName: "jandresdev"
             },
             display: {
                 interactionDetails: {
