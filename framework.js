@@ -85,7 +85,6 @@ window.Framework = {
                 window.PureCloud.clickToDial(message.data);
             }
 
-            if 
         });
     },
 
