@@ -44,7 +44,15 @@
                 };
                 iframeContentWindow.postMessage(message, targetDomain);
                 console.log(message)
-            } 
+            }
+
+            window.PureCloud.subscribe ([{
+            type: "Interaction",
+            categories: ["add", "change", "connect"],
+            callback: function (category, data) {
+                console.log("Category:", category, "Data:", data);
+                }
+            }]);
 
         </script>
     </body>

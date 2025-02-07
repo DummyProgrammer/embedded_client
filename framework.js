@@ -15,8 +15,8 @@ window.Framework = {
             "euw2.pure.cloud": "<your OAuth Client ID>"
         },
         settings: {
-            embedWebRTCByDefault: true,
-            hideWebRTCPopUpOption: false,
+            embedWebRTCByDefault: false,
+            hideWebRTCPopUpOption: true,
             enableCallLogs: true,
             hideCallLogSubject: false,
             hideCallLogContact: false,
@@ -82,6 +82,8 @@ window.Framework = {
             console.log(message.type)
             if (message && message.type === 'clickToDial') {
                 console.log(message.data)
+                console.log("Here is a new message from my new JS File!")
+                console.log("Second new message from my new JS File!")
                 window.PureCloud.clickToDial(message.data);
             }
 
