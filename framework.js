@@ -104,3 +104,11 @@ window.Framework = {
     contactSearch: function (searchValue, onSuccess, onFailure) {
     }
 };
+
+window.PureCloud.subscribe ([{
+    type: "Interaction",
+    categories: ["add", "change", "connect"],
+    callback: function (category, data) {
+        console.log("Category:", category, "Data:", data);
+        }
+    }]);
