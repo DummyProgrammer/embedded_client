@@ -5,7 +5,7 @@ window.Framework = {
             "cac1.pure.cloud": "<your OAuth Client ID>",
             "sae1.pure.cloud": "<your OAuth Client ID>",
             "mypurecloud.com": "<your OAuth Client ID>",
-            "usw2.pure.cloud": "9d9b5378-2f8f-4196-b1fb-43634adb2736",
+            "usw2.pure.cloud": "<your OAuth Client ID>",
             "aps1.pure.cloud": "<your OAuth Client ID>",
             "apne2.pure.cloud": "<your OAuth Client ID>",
             "mypurecloud.com.au": "<your OAuth Client ID>",
