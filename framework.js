@@ -1,18 +1,8 @@
 window.Framework = {
     config: {
-        name: "Jandresdev",
+        name: "jandresdev",
         clientIds: {
-            "cac1.pure.cloud": "<your OAuth Client ID>",
-            "sae1.pure.cloud": "<your OAuth Client ID>",
-            "mypurecloud.com": "<your OAuth Client ID>",
-            "usw2.pure.cloud": "<your OAuth Client ID>",
-            "aps1.pure.cloud": "<your OAuth Client ID>",
-            "apne2.pure.cloud": "<your OAuth Client ID>",
-            "mypurecloud.com.au": "<your OAuth Client ID>",
-            "mypurecloud.jp": "<your OAuth Client ID>",
-            "mypurecloud.ie": "<your OAuth Client ID>",
-            "mypurecloud.de": "<your OAuth Client ID>",
-            "euw2.pure.cloud": "<your OAuth Client ID>"
+            "usw2.pure.cloud": "9d9b5378-2f8f-4196-b1fb-43634adb2736"
         },
         settings: {
             embedWebRTCByDefault: false,
@@ -22,7 +12,7 @@ window.Framework = {
             hideCallLogContact: false,
             hideCallLogRelation: false,
             enableTransferContext: true,
-            dedicatedLoginWindow: true,
+            dedicatedLoginWindow: false,
             embeddedInteractionWindow: true,
             enableConfigurableCallerId: false,
             enableServerSideLogging: false,
@@ -90,6 +80,7 @@ window.Framework = {
         });
     },
 
+
     screenPop: function (searchString, interaction) {
         // Use your CRM vendor's API to perform screen pop.
     },
@@ -112,3 +103,7 @@ window.PureCloud.subscribe ([{
         console.log("Category:", category, "Data:", data);
         }
     }]);
+
+    window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
+
+
