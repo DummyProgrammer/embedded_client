@@ -104,6 +104,6 @@ window.PureCloud.subscribe ([{
         }
     }]);
 
-    window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
+window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
 
 
