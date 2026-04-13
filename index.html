@@ -22,12 +22,23 @@
         <ul>
             <li><a href="tel:+13172222222">Call Us: +13172222222 - For browser extensions</a></li>
             <li>
+                <button onclick="toggleIframe()">Hide / Show iFrame</button>
                 <input type="text" id="phoneNumberInput" placeholder="Enter phone number">
                 <button id="clickToDialButton" onclick="performClickToDial()">Click to Dial - For Embedded client</button>
             </li>
         </ul>
         
         <script>
+            function toggleIframe() {
+                const iframe = document.getElementById("myIframe");
+
+                if (iframe.style.display === "none") {
+                iframe.style.display = "block";
+                } else {
+                iframe.style.display = "none";
+                }
+            }
+
             function performClickToDial() {
                 const iframeContentWindow = document.querySelector('iframe').contentWindow;
                 const phoneNumberInput = document.getElementById('phoneNumberInput');
