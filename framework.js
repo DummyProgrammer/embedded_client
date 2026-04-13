@@ -87,6 +87,9 @@ window.Framework = {
     },
     processCallLog: function (callLog, interaction, eventName, onSuccess, onFailure)  {
        // Use your CRM vendor's API to provide interaction log information.
+       console.log("Joseph!")
+       console.log(callLog)
+       console.log(interaction)
        onSuccess({
            id: externalCallLog.id
        });
