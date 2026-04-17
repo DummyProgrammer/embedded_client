@@ -109,23 +109,31 @@ window.PureCloud.subscribe ([{
     }]);
 
 window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
-const platformClient = window.platformClient;
-const client = platformClient.ApiClient.instance;
-client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
-// Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
-client.setAccessToken(token);
+window.addEventListener('message', (event) => {
+    const allowedOrigin = 'https://dummyprogrammer.github.io'; // change this to your webserver domain (origin)
+    if (allowedOrigin !== event.origin) {
+        return;
+    }
+    const platformClient = window.platformClient;
+    const client = platformClient.ApiClient.instance;
+    client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
-let apiInstance = new platformClient.PresenceApi();
-let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
+    // Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
+    client.setAccessToken(token);
 
-// Get a user's Genesys Cloud presence.
-//comment
-apiInstance.getUserPresencesPurecloud(userId)
-  .then((data) => {
-    console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
-  })
-  .catch((err) => {
-    console.log("There was a failure calling getUserPresencesPurecloud");
-    console.error(err);
-  });
+    let apiInstance = new platformClient.PresenceApi();
+    let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
+
+    // Get a user's Genesys Cloud presence.
+    //comment
+    apiInstance.getUserPresencesPurecloud(userId)
+    .then((data) => {
+        console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
+    })
+    .catch((err) => {
+        console.log("There was a failure calling getUserPresencesPurecloud");
+        console.error(err);
+    });
+
+});

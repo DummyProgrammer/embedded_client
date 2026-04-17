@@ -25,6 +25,7 @@
                 <button onclick="toggleIframe()">Hide / Show iFrame</button>
                 <input type="text" id="phoneNumberInput" placeholder="Enter phone number">
                 <button id="clickToDialButton" onclick="performClickToDial()">Click to Dial - For Embedded client</button>
+                <button id="GET Presence" onclick="getPresence()">GET Presence</button>
             </li>
         </ul>
         
@@ -38,7 +39,10 @@
                 iframe.style.display = "none";
                 }
             }
-
+            function getPresence() {
+                const message = {type: 'INIT_GENESYS' }
+                iframeContentWindow.postMessage(message, "https://apps.usw2.pure.cloud");
+            }
             function performClickToDial() {
                 const iframeContentWindow = document.querySelector('iframe').contentWindow;
                 const phoneNumberInput = document.getElementById('phoneNumberInput');
