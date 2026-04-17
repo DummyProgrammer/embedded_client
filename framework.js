@@ -2,7 +2,7 @@ window.Framework = {
     config: {
         name: "jandresdev",
         clientIds: {
-            "usw2.pure.cloud": "a26c23fd-76e6-4f35-91be-2758ee0e664f"
+            "usw2.pure.cloud": "9d9b5378-2f8f-4196-b1fb-43634adb2736"
         },
         settings: {
             embedWebRTCByDefault: false,
@@ -109,5 +109,23 @@ window.PureCloud.subscribe ([{
     }]);
 
 window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
+const platformClient = window.platformClient;
+const client = platformClient.ApiClient.instance;
+client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
+// Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
+client.setAccessToken(token);
 
+let apiInstance = new platformClient.PresenceApi();
+let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
+
+// Get a user's Genesys Cloud presence.
+//comment
+apiInstance.getUserPresencesPurecloud(userId)
+  .then((data) => {
+    console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
+  })
+  .catch((err) => {
+    console.log("There was a failure calling getUserPresencesPurecloud");
+    console.error(err);
+  });
