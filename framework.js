@@ -118,7 +118,7 @@ function logEvent(message) {
 */
 window.PureCloud.User.getAuthToken((token) => { 
     console.log("TOKEN: " + token); document.cookie = "token=" + token; 
-    localStorage.setItem("authToken", token);
+    window.authToken = token;
 
 
 });
@@ -129,5 +129,31 @@ window.addEventListener('message', (event) => {
         return;
     }
     const type = event.data?.type;
+
+    if (type === 'GET_USER_PRESENCE') {
+        const platformClient = require('platformClient');
+        console.log("Handling presence request...");
+        const client = platformClient.ApiClient.instance;
+        client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
+
+        // Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
+        client.setAccessToken(window.authToken);
+
+        let apiInstance = new platformClient.PresenceApi();
+        let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
+
+        // Get a user's Genesys Cloud presence.
+        apiInstance.getUserPresencesPurecloud(userId)
+        .then((data) => {
+            console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
+            document.getElementById("apiResult").innerHTML =`<pre>${JSON.stringify(data, null, 2)}</pre>`;
+
+        })
+        .catch((err) => {
+            console.log("There was a failure calling getUserPresencesPurecloud");
+            document.getElementById("apiResult").innerHTML ="Error fetching data";
+            console.error(err);
+        });
+        }
 
 });

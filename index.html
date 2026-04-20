@@ -103,6 +103,11 @@
                 document.getElementById("eventsLog").innerHTML = "<p>No events yet...</p>";
             }
 
+            function getPresence() {
+                const iframeContentWindow = document.querySelector('iframe').contentWindow;
+                const message = {type: 'GET_USER_PRESENCE' }
+                iframeContentWindow.postMessage(message, "https://apps.usw2.pure.cloud");
+            }
             function performClickToDial() {
                 const iframeContentWindow = document.querySelector('iframe').contentWindow;
                 const phoneNumberInput = document.getElementById('phoneNumberInput');
@@ -125,42 +130,6 @@
         </script>
         <script src="https://sdk-cdn.mypurecloud.com/javascript/251.1.0/purecloud-platform-client-v2.min.js"></script>
 
-        <script type="text/javascript">
-        // Obtain a reference to the platformClient object
-        const platformClient = require('platformClient');
-
-
-        function getPresence() {
-
-            const token = localStorage.getItem("authToken");
-            console.log("Handling presence request...");
-            console.log(token)
-            client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
-
-            // Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
-            client.setAccessToken(token);
-
-            let apiInstance = new platformClient.PresenceApi();
-            let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
-
-            // Get a user's Genesys Cloud presence.
-            apiInstance.getUserPresencesPurecloud(userId)
-            .then((data) => {
-                console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
-                document.getElementById("apiResult").innerHTML =`<pre>${JSON.stringify(data, null, 2)}</pre>`;
-
-            })
-            .catch((err) => {
-                console.log("There was a failure calling getUserPresencesPurecloud");
-                document.getElementById("apiResult").innerHTML ="Error fetching data";
-                console.error(err);
-            });
-
-        }
-
- 
-        </script>
-        
     </body>
 
 </html>
