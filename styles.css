@@ -36,10 +36,10 @@ section {
 
 /* IFRAME STYLE */
 iframe {
-    flex: 1;
-    height: 800px;
+    height: 500px;
     border: none;
     background: #fff;
+    flex: none;
 }
 
 /* HIDE CLASS */
