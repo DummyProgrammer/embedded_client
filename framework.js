@@ -108,14 +108,14 @@ window.PureCloud.subscribe ([{
         }
     }]);
 
-/* FUTURE: Event logging 
+
 function logEvent(message) {
     const log = document.getElementById("eventsLog");
     const entry = document.createElement("div");
     entry.textContent = message;
     log.appendChild(entry);
-    }
-*/
+}
+
 window.PureCloud.User.getAuthToken((token) => {
     console.log("GENESYS TOKEN:", token);
     window.parent.postMessage(
@@ -133,4 +133,14 @@ window.addEventListener('message', (event) => {
         return;
     }
     const type = event.data?.type;
+
+    if (type === 'subscribe') {
+        window.PureCloud.subscribe ([{
+        type: event.data.eventType,
+        categories: [event.data.category],
+        callback: function (category, data) {
+            logEvent(`Received event ${category} with data: ${JSON.stringify(data)}`);
+            }
+        }]);
+    }
 });

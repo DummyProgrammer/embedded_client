@@ -95,6 +95,13 @@
 </section>
         
         <script>
+            function logEvent(message) {
+                const log = document.getElementById("eventsLog");
+                const entry = document.createElement("div");
+                entry.textContent = message;
+                log.appendChild(entry);
+            }
+
             function toggleInteraction() {
                 const iframe = document.getElementById("embeddedInteraction");
                 iframe.classList.toggle("hidden");
@@ -124,10 +131,32 @@
                 console.log(message)
             }
 
+            function subscribeEvent() {
+                const eventType = document.getElementById('eventType').value;
+                const eventCategory = document.getElementById('eventCategory').value;
+                const iframeContentWindow = document.querySelector('iframe').contentWindow;
+                const targetDomain = 'https://apps.usw2.pure.cloud';
+                const message = {
+                    type: 'subscribe',
+                    data: {
+                        eventType: eventType,
+                        category: eventCategory
+                    }
+                };
+                iframeContentWindow.postMessage(message, targetDomain);
+                console.log(`Subscribed to ${eventType}:${eventCategory}`);
+                logEvent(`Subscribed to ${eventType}:${eventCategory}`);
+
+            }
+
         </script>
+
+        <!-- CDN for Genesys Cloud JavaScript SDK -->
         <script src="https://sdk-cdn.mypurecloud.com/javascript/251.1.0/purecloud-platform-client-v2.min.js"></script>
 
         <script>
+
+        // receive Genesys Auth Token from Embedded Framework
             window.addEventListener("message", (event) => {
             const allowedOrigin = "https://apps.usw2.pure.cloud";
             if (event.origin !== allowedOrigin) return;
