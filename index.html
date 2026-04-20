@@ -47,10 +47,29 @@
                 <p>No events yet...</p>
             </div>
 
-            <button onclick="clearEvents()">Clear Events</button>
-        </div>
+            <!-- INPUTS -->
+            <div class="form-group">
+                <label for="eventType">Type</label>
+                <input type="text" id="eventType" placeholder="e.g. Interaction">
+            </div>
 
-    </div>
+            <div class="form-group">
+                <label for="eventCategory">Category</label>
+                <input type="text" id="eventCategory" placeholder="e.g. connect">
+            </div>
+
+            <!-- BUTTONS -->
+            <button onclick="subscribeEvent()">Subscribe</button>
+            <button onclick="clearEvents()">Clear Events</button>
+
+            <!-- FOOTER NOTE -->
+            <div class="events-footer">
+                Reference: 
+                <a href="https://developer.genesys.cloud/platform/embeddable-framework/actions/subscribe" target="_blank">
+                    https://developer.genesys.cloud/platform/embeddable-framework/actions/subscribe
+                </a>
+            </div>
+        </div>
 </section>
 
 <!-- CLICK TO DIAL -->
@@ -69,7 +88,7 @@
 
 <!-- API TESTING -->
 <section class="card">
-    <h2>API Testing</h2>
+    <h2>Genesys Public API via EF OAuth</h2>
     <button onclick="getPresence()">Get Presence</button>
 
     <div id="apiResult"></div>
@@ -110,6 +129,11 @@
 
         </script>
         <script src="https://sdk-cdn.mypurecloud.com/javascript/251.1.0/purecloud-platform-client-v2.min.js"></script>
+
+        <script type="text/javascript">
+        // Obtain a reference to the platformClient object
+        const platformClient = require('platformClient');
+        </script>
         
     </body>
 

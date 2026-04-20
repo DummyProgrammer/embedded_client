@@ -38,8 +38,11 @@ section {
 iframe {
     height: 500px;
     border: none;
-    background: #fff;
     flex: none;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    background: #fff;
 }
 
 /* HIDE CLASS */
@@ -115,4 +118,46 @@ a[href^="tel:"] {
     .iframe-container {
         flex-direction: column;
     }
+}
+
+/* Inputs in events panel */
+#eventsPanel .form-group {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#eventsPanel label {
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #444;
+}
+
+#eventsPanel input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Footer reference */
+.events-footer {
+    margin-top: 10px;
+    font-size: 11px;
+    color: #666;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 8px;
+}
+
+.events-footer a {
+    color: #0078d4;
+    text-decoration: none;
+}
+
+.events-footer a:hover {
+    text-decoration: underline;
+}
+
+#eventsPanel button {
+    margin-top: 8px;
+    width: 100%;
 }

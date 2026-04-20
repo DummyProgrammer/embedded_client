@@ -116,7 +116,12 @@ function logEvent(message) {
     log.appendChild(entry);
     }
 */
-window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
+window.PureCloud.User.getAuthToken((token) => { 
+    console.log("TOKEN: " + token); document.cookie = "token=" + token; 
+    window.authToken = token;
+
+
+});
 
 window.addEventListener('message', (event) => {
     const allowedOrigin = 'https://dummyprogrammer.github.io'; // change this to your webserver domain (origin)
@@ -128,7 +133,7 @@ window.addEventListener('message', (event) => {
     client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
     // Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
-    client.setAccessToken(token);
+    client.setAccessToken(window.authToken);
 
     let apiInstance = new platformClient.PresenceApi();
     let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
@@ -137,9 +142,12 @@ window.addEventListener('message', (event) => {
     apiInstance.getUserPresencesPurecloud(userId)
     .then((data) => {
         console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
+        document.getElementById("apiResult").innerHTML =`<pre>${JSON.stringify(data, null, 2)}</pre>`;
+
     })
     .catch((err) => {
         console.log("There was a failure calling getUserPresencesPurecloud");
+        document.getElementById("apiResult").innerHTML ="Error fetching data";
         console.error(err);
     });
 
