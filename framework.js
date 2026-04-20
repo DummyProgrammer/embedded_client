@@ -131,10 +131,9 @@ window.addEventListener('message', (event) => {
     const type = event.data?.type;
 
     if (type === 'GET_USER_PRESENCE') {
-        
-        console.log("Handling presence request...");
 
-        const platformClient = window.platformClient;
+        console.log("Handling presence request...");
+        const platformClient = window.platformClient
         const client = platformClient.ApiClient.instance;
         client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
