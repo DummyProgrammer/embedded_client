@@ -29,17 +29,22 @@ section {
 
 /* FLEX LAYOUT FOR IFRAMES */
 .iframe-container {
+    flex: 1;
     display: flex;
-    gap: 20px;
-    margin-top: 15px;
+    gap: 15px;
+    margin-top: 10px;
+
+    align-items: stretch; /* keep equal height baseline */
+    min-height: 0;        /* 🔑 critical fix */
 }
 
 /* IFRAME STYLE */
 iframe {
     flex: 1;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     border: none;
-    background: #fff;
+    min-height: 0;
 }
 
 /* HIDE CLASS */
@@ -90,11 +95,10 @@ a[href^="tel:"] {
 
 /* PANEL STRUCTURE */
 .panel {
-    flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;   /* 🔑 prevents content from forcing height */
 }
-
 .panel h3 {
     margin-bottom: 10px;
 }
@@ -102,12 +106,8 @@ a[href^="tel:"] {
 /* EVENTS PANEL */
 .events-container {
     flex: 1;
-    background: #f0f2f5;
-    border: 1px solid #ddd;
-    padding: 10px;
     overflow-y: auto;
-    height: 400px;
-    margin-bottom: 10px;
+    min-height: 0;   /* 🔑 THIS stops it from stretching siblings */
 }
 
 /* RESPONSIVE (optional but recommended) */
@@ -116,3 +116,4 @@ a[href^="tel:"] {
         flex-direction: column;
     }
 }
+
