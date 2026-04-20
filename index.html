@@ -131,13 +131,14 @@
 
 
         function getPresence() {
+
+            const token = localStorage.getItem("authToken");
             console.log("Handling presence request...");
-            console.log(window.authToken)
-            const client = platformClient.ApiClient.instance;
+            console.log(token)
             client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
             // Manually set auth token or use loginImplicitGrant(...) or loginClientCredentialsGrant(...) or loginPKCEGrant(...)
-            client.setAccessToken(window.authToken);
+            client.setAccessToken(token);
 
             let apiInstance = new platformClient.PresenceApi();
             let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id

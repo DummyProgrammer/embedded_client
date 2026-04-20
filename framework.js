@@ -118,7 +118,7 @@ function logEvent(message) {
 */
 window.PureCloud.User.getAuthToken((token) => { 
     console.log("TOKEN: " + token); document.cookie = "token=" + token; 
-    window.authToken = token;
+    localStorage.setItem("authToken", token);
 
 
 });
