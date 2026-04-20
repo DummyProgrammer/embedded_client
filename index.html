@@ -105,7 +105,7 @@
 
             function getPresence() {
                 const iframeContentWindow = document.querySelector('iframe').contentWindow;
-                const message = {type: 'INIT_GENESYS' }
+                const message = {type: 'GET_USER_PRESENCE' }
                 iframeContentWindow.postMessage(message, "https://apps.usw2.pure.cloud");
             }
             function performClickToDial() {
