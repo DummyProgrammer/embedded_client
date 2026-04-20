@@ -2,7 +2,7 @@ window.Framework = {
     config: {
         name: "jandresdev",
         clientIds: {
-            "usw2.pure.cloud": "9d9b5378-2f8f-4196-b1fb-43634adb2736"
+            "usw2.pure.cloud": "a26c23fd-76e6-4f35-91be-2758ee0e664f"
         },
         settings: {
             embedWebRTCByDefault: false,
