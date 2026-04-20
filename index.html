@@ -132,6 +132,7 @@
 
         function getPresence() {
             console.log("Handling presence request...");
+            console.log(window.authToken)
             const client = platformClient.ApiClient.instance;
             client.setEnvironment(platformClient.PureCloudRegionHosts.us_west_2); // Genesys Cloud region
 
