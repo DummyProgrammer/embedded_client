@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Embedded Framework Testing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="styles.css">
+<body>
 
-        <meta charset="utf-8"/>
-
-        <title>Embedded Framework Testing</title>
-
-    </head>
-
-    <body>
-
+    <header>
         <h1>Embedded Framework Testing</h1>
-        <iframe id="softphone" style="width: 400px; height: 500px; border: none;" allow="camera *; microphone *; autoplay *" src="https://apps.usw2.pure.cloud/crm/embeddableFramework.html?enableFrameworkClientId=true"></iframe>
-        <iframe id = "embeddedInteraction" style="width: 500px; height: 500px; border: none;" allow="camera *; microphone *; autoplay *; hid *" src="https://apps.usw2.pure.cloud/crm/interaction.html"></iframe>
+    </header>
 
-        <h2>For Click-To-Dial Test</h2>
-        
-        <ul>
-            <li><a href="tel:+13172222222">Call Us: +13172222222 - For browser extensions</a></li>
-            <li>
-                <button onclick="toggleIframe()">Hide / Show iFrame</button>
-                <input type="text" id="phoneNumberInput" placeholder="Enter phone number">
-                <button id="clickToDialButton" onclick="performClickToDial()">Click to Dial - For Embedded client</button>
-                <button id="GET Presence" onclick="getPresence()">GET Presence</button>
-            </li>
-        </ul>
+    <!-- IFRAME SECTION -->
+    <section class="iframe-section">
+        <div class="iframe-header">
+            <h2>Softphone & Interaction Panel</h2>
+            <button onclick="toggleInteraction()">Toggle Interaction Panel</button>
+        </div>
+
+        <div class="iframe-container">
+            <iframe id="softphone"
+                allow="camera *; microphone *; autoplay *"
+                src="https://apps.usw2.pure.cloud/crm/embeddableFramework.html?enableFrameworkClientId=true">
+            </iframe>
+
+            <iframe id="embeddedInteraction"
+                allow="camera *; microphone *; autoplay *; hid *"
+                src="https://apps.usw2.pure.cloud/crm/interaction.html">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- CLICK TO DIAL SECTION -->
+    <section class="card">
+        <h2>Click-To-Dial Testing</h2>
+
+        <a href="tel:+13172222222">
+            Call Us: +13172222222 (Browser Extension)
+        </a>
+
+        <div class="form-group">
+            <input type="text" id="phoneNumberInput" placeholder="Enter phone number">
+            <button onclick="performClickToDial()">Click to Dial (Embedded)</button>
+        </div>
+    </section>
+
+    <!-- API TESTING SECTION -->
+    <section class="card">
+        <h2>API Testing</h2>
+        <button onclick="getPresence()">Get Presence</button>
+
+        <div id="apiResult"></div>
+    </section>
         
         <script>
             function toggleIframe() {

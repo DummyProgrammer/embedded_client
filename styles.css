@@ -1,18 +1,89 @@
-/* styles.css */
-
-h1 {
+body {
     font-family: Arial, sans-serif;
-    color: #333;
+    margin: 0;
+    background-color: #f5f7fa;
 }
 
+/* HEADER */
+header {
+    background-color: #2d3e50;
+    color: white;
+    padding: 15px 20px;
+}
+
+/* SECTION SPACING */
+section {
+    padding: 20px;
+}
+
+/* IFRAME SECTION */
+.iframe-section {
+    background-color: #ffffff;
+}
+
+.iframe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* FLEX LAYOUT FOR IFRAMES */
+.iframe-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* IFRAME STYLE */
+iframe {
+    flex: 1;
+    height: 500px;
+    border: none;
+    background: #fff;
+}
+
+/* HIDE CLASS */
+.hidden {
+    display: none;
+}
+
+/* CARD SECTIONS */
+.card {
+    background-color: #ffffff;
+    margin: 20px;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* INPUT + BUTTON */
+.form-group {
+    margin-top: 15px;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #0078d4;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005fa3;
+}
+
+/* TEL LINK */
 a[href^="tel:"] {
-    color: #000000;
-    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
     font-weight: bold;
-}
-
-
-button, input {
-  display: block;
-  margin-bottom: 10px;
+    color: #000;
+    text-decoration: none;
 }
