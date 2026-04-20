@@ -108,6 +108,14 @@ window.PureCloud.subscribe ([{
         }
     }]);
 
+/* FUTURE: Event logging 
+function logEvent(message) {
+    const log = document.getElementById("eventsLog");
+    const entry = document.createElement("div");
+    entry.textContent = message;
+    log.appendChild(entry);
+    }
+*/
 window.PureCloud.User.getAuthToken((token) => { console.log("TOKEN: " + token); document.cookie = "token=" + token; });
 
 window.addEventListener('message', (event) => {

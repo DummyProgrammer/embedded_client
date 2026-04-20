@@ -87,3 +87,32 @@ a[href^="tel:"] {
     color: #000;
     text-decoration: none;
 }
+
+/* PANEL STRUCTURE */
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel h3 {
+    margin-bottom: 10px;
+}
+
+/* EVENTS PANEL */
+.events-container {
+    flex: 1;
+    background: #f0f2f5;
+    border: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+    height: 400px;
+    margin-bottom: 10px;
+}
+
+/* RESPONSIVE (optional but recommended) */
+@media (max-width: 1000px) {
+    .iframe-container {
+        flex-direction: column;
+    }
+}

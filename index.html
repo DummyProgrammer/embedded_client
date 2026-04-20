@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -9,62 +8,82 @@
 
 <body>
 
-    <header>
-        <h1>Embedded Framework Testing</h1>
-    </header>
+<header>
+    <h1>Embedded Framework Testing</h1>
+</header>
 
-    <!-- IFRAME SECTION -->
-    <section class="iframe-section">
-        <div class="iframe-header">
-            <h2>Softphone & Interaction Panel</h2>
-            <button onclick="toggleInteraction()">Toggle Interaction Panel</button>
-        </div>
+<!-- IFRAME SECTION -->
+<section class="iframe-section">
+    <div class="iframe-header">
+        <h2>Softphone, Interaction & Events</h2>
+        <button onclick="toggleInteraction()">Toggle Interaction Panel</button>
+    </div>
 
-        <div class="iframe-container">
+    <div class="iframe-container">
+
+        <!-- SOFTPHONE -->
+        <div class="panel">
+            <h3>Softphone</h3>
             <iframe id="softphone"
                 allow="camera *; microphone *; autoplay *"
                 src="https://apps.usw2.pure.cloud/crm/embeddableFramework.html?enableFrameworkClientId=true">
             </iframe>
+        </div>
 
+        <!-- INTERACTION -->
+        <div class="panel" id="interactionPanel">
+            <h3>Embedded Interaction</h3>
             <iframe id="embeddedInteraction"
                 allow="camera *; microphone *; autoplay *; hid *"
                 src="https://apps.usw2.pure.cloud/crm/interaction.html">
             </iframe>
         </div>
-    </section>
 
-    <!-- CLICK TO DIAL SECTION -->
-    <section class="card">
-        <h2>Click-To-Dial Testing</h2>
+        <!-- NEW: EF EVENTS PANEL -->
+        <div class="panel" id="eventsPanel">
+            <h3>EF Events Subscription</h3>
 
-        <a href="tel:+13172222222">
-            Call Us: +13172222222 (Browser Extension)
-        </a>
+            <div class="events-container" id="eventsLog">
+                <p>No events yet...</p>
+            </div>
 
-        <div class="form-group">
-            <input type="text" id="phoneNumberInput" placeholder="Enter phone number">
-            <button onclick="performClickToDial()">Click to Dial (Embedded)</button>
+            <button onclick="clearEvents()">Clear Events</button>
         </div>
-    </section>
 
-    <!-- API TESTING SECTION -->
-    <section class="card">
-        <h2>API Testing</h2>
-        <button onclick="getPresence()">Get Presence</button>
+    </div>
+</section>
 
-        <div id="apiResult"></div>
-    </section>
+<!-- CLICK TO DIAL -->
+<section class="card">
+    <h2>Click-To-Dial Testing</h2>
+
+    <a href="tel:+13172222222">
+        Call Us: +13172222222 (Browser Extension)
+    </a>
+
+    <div class="form-group">
+        <input type="text" id="phoneNumberInput" placeholder="Enter phone number">
+        <button onclick="performClickToDial()">Click to Dial (Embedded)</button>
+    </div>
+</section>
+
+<!-- API TESTING -->
+<section class="card">
+    <h2>API Testing</h2>
+    <button onclick="getPresence()">Get Presence</button>
+
+    <div id="apiResult"></div>
+</section>
         
         <script>
-            function toggleIframe() {
+            function toggleInteraction() {
                 const iframe = document.getElementById("embeddedInteraction");
-
-                if (iframe.style.display === "none") {
-                iframe.style.display = "block";
-                } else {
-                iframe.style.display = "none";
-                }
+                iframe.classList.toggle("hidden");
             }
+            function clearEvents() {
+                document.getElementById("eventsLog").innerHTML = "<p>No events yet...</p>";
+            }
+
             function getPresence() {
                 const iframeContentWindow = document.querySelector('iframe').contentWindow;
                 const message = {type: 'INIT_GENESYS' }
