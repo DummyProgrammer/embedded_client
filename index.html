@@ -40,6 +40,7 @@
                 }
             }
             function getPresence() {
+                const iframeContentWindow = document.querySelector('iframe').contentWindow;
                 const message = {type: 'INIT_GENESYS' }
                 iframeContentWindow.postMessage(message, "https://apps.usw2.pure.cloud");
             }

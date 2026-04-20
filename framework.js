@@ -126,7 +126,6 @@ window.addEventListener('message', (event) => {
     let userId = "a7a42796-82c9-4016-8281-5406977c42a3"; // String | user Id
 
     // Get a user's Genesys Cloud presence.
-    //comment
     apiInstance.getUserPresencesPurecloud(userId)
     .then((data) => {
         console.log(`getUserPresencesPurecloud success! data: ${JSON.stringify(data, null, 2)}`);
