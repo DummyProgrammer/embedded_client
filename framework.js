@@ -115,6 +115,7 @@ function logEvent(message_log) {
     { type: "event_log", payload: message_log },
     targetDomain
     );
+}
 
 window.PureCloud.User.getAuthToken((token) => {
     console.log("GENESYS TOKEN:", token);
