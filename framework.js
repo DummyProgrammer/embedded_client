@@ -135,11 +135,15 @@ window.addEventListener('message', (event) => {
     const type = event.data?.type;
 
     if (type === 'subscribe') {
+        const { eventType, category } = event.data.data;
+
+        console.log(`Subscribing to event ${eventType} with category ${category}`);
         window.PureCloud.subscribe ([{
-        type: event.data.eventType,
-        categories: [event.data.category],
+        type: eventType,
+        categories: [category],
         callback: function (category, data) {
             logEvent(`Received event ${category} with data: ${JSON.stringify(data)}`);
+            console.log(`Received event ${category} with data:`, data);
             }
         }]);
     }
