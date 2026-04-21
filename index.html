@@ -165,6 +165,15 @@
                 window.authToken = event.data.accessToken;
             }
         });
+
+        // receive event logs from Embedded Framework
+        window.addEventListener("message", (event) => {
+            const allowedOrigin = "https://apps.usw2.pure.cloud";
+            if (event.origin !== allowedOrigin) return;
+            if (event.data?.type === "event_log") {
+                logEvent(event.data.payload);
+            }
+        });
         </script>
 
         <script type="text/javascript">

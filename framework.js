@@ -109,12 +109,12 @@ window.PureCloud.subscribe ([{
     }]);
 
 
-function logEvent(message) {
-    const log = document.getElementById("eventsLog");
-    const entry = document.createElement("div");
-    entry.textContent = message;
-    log.appendChild(entry);
-}
+function logEvent(message_log) {
+    const targetDomain = 'https://dummyprogrammer.github.io';
+    window.parent.postMessage(
+    { type: "event_log", payload: message_log },
+    targetDomain
+    );
 
 window.PureCloud.User.getAuthToken((token) => {
     console.log("GENESYS TOKEN:", token);
